@@ -1,0 +1,16 @@
+server:
+  port: ${CONFIG_SERVICE_PORT:8888}
+spring:
+  application:
+    name: sf-config
+  cloud:
+    config:
+      server:
+        native:
+          searchLocations: ${CONFIG_REPOSITORY_LOCATION:file:///${user.home}/sysfoundry/config-repo}/{application}
+#        git:
+#          default-label: master
+#          uri: file:///${user.home}/workspace/my-projects/sysfoundry/config-repo
+    consul:
+      discovery:
+        instanceId: ${spring.application.name}:${random.value}
